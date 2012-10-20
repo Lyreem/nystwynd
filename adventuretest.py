@@ -52,8 +52,11 @@ class Game(object):
 		To start off we'll ask a few questions and then recap. 
 		Let's get started: \n"""
 		
-		name = raw_input("What is your name? \n>")
+		global name
+		global player_class
+		global player
 		
+		name = raw_input("What is your name? \n>")
 		player_class = raw_input ("\nChoose a class:\nReporter\nDetective\nMarine \n>")
 		player = create_class(player_class, name)
 		
@@ -71,7 +74,8 @@ class Game(object):
 			return 'death'
 			
 	def hotel_room(self):
-		print """Finally, progress is progressing progressively!"
+		print """
+		Finally, progress is progressing progressively!"
 		keeping this going"
 		so that error remains at bay"
 		this will be a room"""
@@ -81,11 +85,22 @@ class Game(object):
 			return 'death'
 		
 	def hall_way(self):
-		print """This is a hallway
-	\nYou can hear the Nyst outside the walls
-	\nIt makes a sound akin to a pallbearer mourning
-	\nwhat do you do?"""
-		
+		print """
+		This is a hallway
+		You can hear the Nyst outside the walls
+		It makes a sound akin to a pallbearer mourning
+		what do you do?"""
+		if raw_input("> ") == 'look':
+			if player.type == "Reporter":
+				print "There is a door in front of you labelled: Reporter "
+			elif player.type == "Detective":
+				print "There is a door in front of you labelled: Detective"
+			elif player.type == "Marine":
+				print "There is a door in front of you labelled: Marine"
+			else:
+				print 'You are Blind'
+		else:
+			return 'death'
 	
 	#def move_to_room(self, room):
 		#self.world.current_area = self.world.rooms[room]

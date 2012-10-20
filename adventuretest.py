@@ -9,7 +9,7 @@ class Game(object):
 					]
 		self.start = start
 	
-	def __main__():
+	def main(self):
 		print """
 	@@@  @@@  @@@ @@@   @@@@@@   @@@@@@@  
 	@@@@ @@@  @@@ @@@  @@@@@@@   @@@@@@@  
@@ -62,7 +62,7 @@ class Game(object):
 			room = getattr(self, next)
 			next = room()	
 			
-	def death():	
+	def death(self):	
 		print self.quips[randint(0, len(self.quips)-1)]
 		exit(1)
 
@@ -191,7 +191,7 @@ class Item():
 	def __init__(self, name):
 		self.name = name
 
-a.game = Game(StartRoom)
-a.game.play()		
+a_game = Game("main")
+a_game.play()		
 #if __name__ == '__main__':
 	#main()

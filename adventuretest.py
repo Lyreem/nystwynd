@@ -91,8 +91,11 @@ class World():
 	
 	rooms = {
 		'start_room': StartRoom(),
-		'bear_room': BearRoom(),
+		'second_room': SecondRoom(),
 		'other_room': OtherRoom(),
+		'first_jo_room': FirstJoRoom(),
+		'first_re_room': FirstReRoom(),
+		'first_ma_room': FirstMaRoom(),
 	}
 
 	def __init__(self, player):
@@ -102,33 +105,51 @@ class World():
 	def where_can_i_go(self):
 		print self.current_area.paths
 
-start = StartRoom()
+#start = StartRoom()
 
 class Area():	
 	paths = []
 
 	
 class StartRoom(Area):
-	paths = ['bear_room', 'other_room']
-	
-	def enter(self):
-		print 'You enter a room! What do you do. \n>'
-
-
-class BearRoom(Area):
-	paths = ['start_room']
+	paths = ['second_room']
 	
 	def enter(self):
 		pass
 
+
+class SecondRoom(Area):
+	paths = ['start_room', 'first_jo_room', 'first_re_room', 'first_ma_room' ]
+	
+	def enter(self):
+		pass
+
+
+class FirstJoRoom(Area):
+	paths = ['second_jo_room']
+	
+	def enter(self):
+		pass
+		
+class First_Re_Room(Area):
+	paths = ['second_re_room']
+	
+	def enter(self):
+		pass
+
+class First_Ma_Room(Area):
+	paths = ['second_ma_room']
+	
+	def enter(self):
+		pass
 
 class OtherRoom(Area):
 	paths = ['start_room']
 	
 	def enter(self):
 		pass
-
-
+		
+		
 class Item():
 
 	def __init__(self, name):

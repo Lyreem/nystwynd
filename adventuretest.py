@@ -55,15 +55,19 @@ def create_class(player_class, name):
 
 
 class World():
+	
+	rooms = {
+		'start_room': StartRoom(),
+		'bear_room': BearRoom(),
+		'other_room': OtherRoom(),
+	}
 
 	def __init__(self, player):
 		self.player = player
-		self.current_area = StartRoom()
-		
-		self._create_world()
-		
-	def _create_world(self):
-		pass
+		self.current_area = self.rooms['start_room']
+	
+	def where_can_i_go(self):
+		print self.current_area.paths
 
 start = StartRoom()
 
@@ -74,19 +78,22 @@ something = StartRoom()
 some_other_thing = StartRoom()
 
 class StartRoom(Area):
-	paths = [BearRoom(), SomeOtherRoom()]
+	paths = ['bear_room', 'other_room']
+	
 	def enter(self):
 		print 'You enter a room! What do you do. \n>'
 
 
 class BearRoom(Area):
-	paths = [start]
+	paths = ['start_room']
+	
 	def enter(self):
 		pass
 
 
-class SomeOtherRoom(Area):
-
+class OtherRoom(Area):
+	paths = ['start_room']
+	
 	def enter(self):
 		pass
 

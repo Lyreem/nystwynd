@@ -3,11 +3,24 @@ from random import randint
 
 class Game(object):
 	
+	
 	def __init__(self, start):
 		self.quips = ["You Died. The Nyst Wind claims you.",
 					"Game Over. The mystery remains.",
 					]
 		self.start = start
+
+	def play(self):
+		next = self.start
+		
+		while True:
+			print "\n--------"
+			room = getattr(self, next)
+			next = room()	
+			
+	def death(self):	
+		print self.quips[randint(0, len(self.quips)-1)]
+		exit(1)
 	
 	def main(self):
 		print """
@@ -35,7 +48,7 @@ class Game(object):
 	  :: :  : :       :     ::    :   :: :  :   \n\n"""
 
 		print """
-		Welcome to AdventureTest! 
+		Welcome to AdventureTest(replace this before live)! 
 		To start off we'll ask a few questions and then recap. 
 		Let's get started: \n"""
 		
@@ -50,21 +63,32 @@ class Game(object):
 		print "Your class is: " + player.type
 		print
 		print "Your class stats are: \n" + str(player)
-
-		#while True:
-			#command = raw_input("\n What do you want to do? \n>")
-			#Commands(command)
-	def play(self):
-		next = self.start
 		
-		while True:
-			print "\n--------"
-			room = getattr(self, next)
-			next = room()	
+		mcguffin = True
+		if mcguffin == True:
+			return 'hotel_room'
+		else:
+			return 'death'
 			
-	def death(self):	
-		print self.quips[randint(0, len(self.quips)-1)]
-		exit(1)
+	def hotel_room(self):
+		print """Finally, progress is progressing progressively!"
+		keeping this going"
+		so that error remains at bay"
+		this will be a room"""
+		if raw_input("> ") == 'leave room':
+			return 'hall_way'
+		else:
+			return 'death'
+		
+	def hall_way(self):
+		print """This is a hallway
+	\nYou can hear the Nyst outside the walls
+	\nIt makes a sound akin to a pallbearer mourning
+	\nwhat do you do?"""
+		
+	
+	#def move_to_room(self, room):
+		#self.world.current_area = self.world.rooms[room]
 
 def create_class(player_class, name):
 	if player_class == "Reporter":
@@ -191,7 +215,7 @@ class Item():
 	def __init__(self, name):
 		self.name = name
 
-a_game = Game("main")
-a_game.play()		
-#if __name__ == '__main__':
-	#main()
+	
+if __name__ == '__main__':
+	a_game = Game("main")
+	a_game.play()	

@@ -43,15 +43,14 @@ def main():
 	print
 	print "Your class stats are: \n" + str(player)
 
-	while True:
-		command = raw_input("\n What do you want to do? \n>")
-		do_stuff(command)
+	#while True:
+		#command = raw_input("\n What do you want to do? \n>")
+		#Commands(command)
 	
 	def death():
-		quips = ["You Died. You must do well in real life.",
-				"Nice Job! You died, Jackass.",
-				"Is that the shape of an L on your forehead?",
-				"I have a small dingo better at this game than you."]
+		quips = ["You Died. The Nyst Wind claims you.",
+				"Game Over. The mystery remains.",
+				]
 		print quips[randint(0, len(quips)-1)]
 		exit(1)
 
@@ -106,8 +105,13 @@ class PlayerClass():
 	def __str__(self):
 		return " Health: %d \n Strength: %d \n Mana: %d \n Stealth: %d" % (self.health, self.stre, self.mana, self.stealth)
 
-
-
+#class Commands(command):
+	#commands = {
+		#'me': PlayerClass(name),
+		#'stats': blahbalh(),
+	
+	
+		#}
 		
 class Area():	
 	paths = []
@@ -117,11 +121,12 @@ class StartRoom(Area):
 	paths = ['second_room']
 	
 	def enter(self):
-		pass
+		print "You awaken in a room"
+		print "There is an exit to the North here"
 
 
 class SecondRoom(Area):
-	paths = ['start_room', 'first_jo_room', 'first_re_room', 'first_ma_room' ]
+	paths = ['start_room', 'first_jo_room', 'first_re_room', 'first_ma_room']
 	
 	def enter(self):
 		pass
@@ -150,6 +155,7 @@ class OtherRoom(Area):
 	def enter(self):
 		pass
 		
+	
 class World():
 	
 	rooms = {

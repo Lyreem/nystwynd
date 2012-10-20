@@ -1,57 +1,69 @@
 from sys import exit
 from random import randint
 
-def main():
-	print """
-@@@  @@@  @@@ @@@   @@@@@@   @@@@@@@  
-@@@@ @@@  @@@ @@@  @@@@@@@   @@@@@@@  
-@@!@!@@@  @@! !@@  !@@         @@!    
-!@!!@!@!  !@! @!!  !@!         !@!    
-@!@ !!@!   !@!@!   !!@@!!      @!!    
-!@!  !!!    @!!!    !!@!!!     !!!    
-!!:  !!!    !!:         !:!    !!:    
-:!:  !:!    :!:        !:!     :!:    
- ::   ::     ::    :::: ::      ::    
-::    :      :     :: : :       :     
+class Game(object):
+	
+	def __init__(self, start):
+		self.quips = ["You Died. The Nyst Wind claims you.",
+					"Game Over. The mystery remains.",
+					]
+		self.start = start
+	
+	def __main__():
+		print """
+	@@@  @@@  @@@ @@@   @@@@@@   @@@@@@@  
+	@@@@ @@@  @@@ @@@  @@@@@@@   @@@@@@@  
+	@@!@!@@@  @@! !@@  !@@         @@!    
+	!@!!@!@!  !@! @!!  !@!         !@!    
+	@!@ !!@!   !@!@!   !!@@!!      @!!    
+	!@!  !!!    @!!!    !!@!!!     !!!    
+	!!:  !!!    !!:         !:!    !!:    
+	:!:  !:!    :!:        !:!     :!:    
+	 ::   ::     ::    :::: ::      ::    
+	::    :      :     :: : :       :     
 
 
-@@@  @@@  @@@  @@@ @@@  @@@  @@@  @@@@@@@   
-@@@  @@@  @@@  @@@ @@@  @@@@ @@@  @@@@@@@@  
-@@!  @@!  @@!  @@! !@@  @@!@!@@@  @@!  @@@  
-!@!  !@!  !@!  !@! @!!  !@!!@!@!  !@!  @!@  
-@!!  !!@  @!@   !@!@!   @!@ !!@!  @!@  !@!  
-!@!  !!!  !@!    @!!!   !@!  !!!  !@!  !!!  
-!!:  !!:  !!:    !!:    !!:  !!!  !!:  !!!  
-:!:  :!:  :!:    :!:    :!:  !:!  :!:  !:!  
- :::: :: :::      ::     ::   ::   :::: ::  
-  :: :  : :       :     ::    :   :: :  :   \n\n"""
+	@@@  @@@  @@@  @@@ @@@  @@@  @@@  @@@@@@@   
+	@@@  @@@  @@@  @@@ @@@  @@@@ @@@  @@@@@@@@  
+	@@!  @@!  @@!  @@! !@@  @@!@!@@@  @@!  @@@  
+	!@!  !@!  !@!  !@! @!!  !@!!@!@!  !@!  @!@  
+	@!!  !!@  @!@   !@!@!   @!@ !!@!  @!@  !@!  
+	!@!  !!!  !@!    @!!!   !@!  !!!  !@!  !!!  
+	!!:  !!:  !!:    !!:    !!:  !!!  !!:  !!!  
+	:!:  :!:  :!:    :!:    :!:  !:!  :!:  !:!  
+	 :::: :: :::      ::     ::   ::   :::: ::  
+	  :: :  : :       :     ::    :   :: :  :   \n\n"""
 
-	print """
-	Welcome to AdventureTest! 
-	To start off we'll ask a few questions and then recap. 
-	Let's get started: \n"""
-	
-	name = raw_input("What is your name? \n>")
-	
-	player_class = raw_input ("\nChoose a class:\nReporter\nDetective\nMarine \n>")
-	player = create_class(player_class, name)
-	
-	print
-	print "\nYour name is: %s" % player.name
-	print
-	print "Your class is: " + player.type
-	print
-	print "Your class stats are: \n" + str(player)
+		print """
+		Welcome to AdventureTest! 
+		To start off we'll ask a few questions and then recap. 
+		Let's get started: \n"""
+		
+		name = raw_input("What is your name? \n>")
+		
+		player_class = raw_input ("\nChoose a class:\nReporter\nDetective\nMarine \n>")
+		player = create_class(player_class, name)
+		
+		print
+		print "\nYour name is: %s" % player.name
+		print
+		print "Your class is: " + player.type
+		print
+		print "Your class stats are: \n" + str(player)
 
-	#while True:
-		#command = raw_input("\n What do you want to do? \n>")
-		#Commands(command)
-	
-	def death():
-		quips = ["You Died. The Nyst Wind claims you.",
-				"Game Over. The mystery remains.",
-				]
-		print quips[randint(0, len(quips)-1)]
+		#while True:
+			#command = raw_input("\n What do you want to do? \n>")
+			#Commands(command)
+	def play(self):
+		next = self.start
+		
+		while True:
+			print "\n--------"
+			room = getattr(self, next)
+			next = room()	
+			
+	def death():	
+		print self.quips[randint(0, len(self.quips)-1)]
 		exit(1)
 
 def create_class(player_class, name):
@@ -113,47 +125,47 @@ class PlayerClass():
 	
 		#}
 		
-class Area():	
-	paths = []
+#class Area():	
+	#paths = []
 
 		
-class StartRoom(Area):
-	paths = ['second_room']
+#class StartRoom(Area):
+	#paths = ['second_room']
 	
-	def enter(self):
-		print "You awaken in a room"
-		print "There is an exit to the North here"
+	#def enter(self):
+		#print "You awaken in a room"
+		#print "There is an exit to the North here"
 
 
-class SecondRoom(Area):
-	paths = ['start_room', 'first_jo_room', 'first_re_room', 'first_ma_room']
+#class SecondRoom(Area):
+	#paths = ['start_room', 'first_jo_room', 'first_re_room', 'first_ma_room']
 	
-	def enter(self):
-		pass
+	#def enter(self):
+		#pass
 
-class FirstJoRoom(Area):
-	paths = ['second_jo_room']
+#class FirstJoRoom(Area):
+	#paths = ['second_jo_room']
 	
-	def enter(self):
-		pass
+	#def enter(self):
+		#pass
 		
-class FirstReRoom(Area):
-	paths = ['second_re_room']
+#class FirstReRoom(Area):
+	#paths = ['second_re_room']
 	
-	def enter(self):
-		pass
+	#def enter(self):
+		#pass
 
-class FirstMaRoom(Area):
-	paths = ['second_ma_room']
+c#lass FirstMaRoom(Area):
+	#paths = ['second_ma_room']
 	
-	def enter(self):
-		pass
+	#def enter(self):
+		#pass
 
-class OtherRoom(Area):
-	paths = ['start_room']
+#class OtherRoom(Area):
+	#paths = ['start_room']
 	
-	def enter(self):
-		pass
+	#def enter(self):
+		#pass
 		
 	
 class World():

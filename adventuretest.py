@@ -125,47 +125,47 @@ class PlayerClass():
 	
 		#}
 		
-#class Area():	
-	#paths = []
+class Area():	
+	paths = []
 
 		
-#class StartRoom(Area):
-	#paths = ['second_room']
+class StartRoom(Area):
+	paths = ['second_room']
 	
-	#def enter(self):
-		#print "You awaken in a room"
-		#print "There is an exit to the North here"
+	def enter(self):
+		print "You awaken in a room"
+		print "There is an exit to the North here"
 
 
-#class SecondRoom(Area):
-	#paths = ['start_room', 'first_jo_room', 'first_re_room', 'first_ma_room']
+class SecondRoom(Area):
+	paths = ['start_room', 'first_jo_room', 'first_re_room', 'first_ma_room']
 	
-	#def enter(self):
-		#pass
+	def enter(self):
+		pass
 
-#class FirstJoRoom(Area):
-	#paths = ['second_jo_room']
+class FirstJoRoom(Area):
+	paths = ['second_jo_room']
 	
-	#def enter(self):
-		#pass
+	def enter(self):
+		pass
 		
-#class FirstReRoom(Area):
-	#paths = ['second_re_room']
+class FirstReRoom(Area):
+	paths = ['second_re_room']
 	
-	#def enter(self):
-		#pass
+	def enter(self):
+		pass
 
-c#lass FirstMaRoom(Area):
-	#paths = ['second_ma_room']
+class FirstMaRoom(Area):
+	paths = ['second_ma_room']
 	
-	#def enter(self):
-		#pass
+	def enter(self):
+		pass
 
-#class OtherRoom(Area):
-	#paths = ['start_room']
+class OtherRoom(Area):
+	paths = ['start_room']
 	
-	#def enter(self):
-		#pass
+	def enter(self):
+		pass
 		
 	
 class World():
@@ -191,5 +191,7 @@ class Item():
 	def __init__(self, name):
 		self.name = name
 
-if __name__ == '__main__':
-	main()
+a.game = Game(StartRoom)
+a.game.play()		
+#if __name__ == '__main__':
+	#main()

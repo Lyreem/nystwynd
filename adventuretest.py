@@ -3,6 +3,30 @@ from random import randint
 
 def main():
 	print """
+@@@  @@@  @@@ @@@   @@@@@@   @@@@@@@  
+@@@@ @@@  @@@ @@@  @@@@@@@   @@@@@@@  
+@@!@!@@@  @@! !@@  !@@         @@!    
+!@!!@!@!  !@! @!!  !@!         !@!    
+@!@ !!@!   !@!@!   !!@@!!      @!!    
+!@!  !!!    @!!!    !!@!!!     !!!    
+!!:  !!!    !!:         !:!    !!:    
+:!:  !:!    :!:        !:!     :!:    
+ ::   ::     ::    :::: ::      ::    
+::    :      :     :: : :       :     
+
+
+@@@  @@@  @@@  @@@ @@@  @@@  @@@  @@@@@@@   
+@@@  @@@  @@@  @@@ @@@  @@@@ @@@  @@@@@@@@  
+@@!  @@!  @@!  @@! !@@  @@!@!@@@  @@!  @@@  
+!@!  !@!  !@!  !@! @!!  !@!!@!@!  !@!  @!@  
+@!!  !!@  @!@   !@!@!   @!@ !!@!  @!@  !@!  
+!@!  !!!  !@!    @!!!   !@!  !!!  !@!  !!!  
+!!:  !!:  !!:    !!:    !!:  !!!  !!:  !!!  
+:!:  :!:  :!:    :!:    :!:  !:!  :!:  !:!  
+ :::: :: :::      ::     ::   ::   :::: ::  
+  :: :  : :       :     ::    :   :: :  :   \n\n"""
+                                           
+	print """
 	Welcome to AdventureTest! 
 	To start off we'll ask a few questions and then recap. 
 	Let's get started: \n"""
@@ -20,12 +44,12 @@ def main():
 	print "Your class stats are: \n" + str(player)
 
 	while True:
-		command = raw_input("What do you want to do? \n>")
+		command = raw_input("\n What do you want to do? \n>")
 		do_stuff(command)
 	
 	def death():
 		quips = ["You Died. You must do well in real life.",
-				"Nice JoB! You died, Jackass.",
+				"Nice Job! You died, Jackass.",
 				"Is that the shape of an L on your forehead?",
 				"I have a small dingo better at this game than you."]
 		print quips[randint(0, len(quips)-1)]
@@ -83,9 +107,7 @@ start = StartRoom()
 class Area():	
 	paths = []
 
-something = StartRoom()
-some_other_thing = StartRoom()
-
+	
 class StartRoom(Area):
 	paths = ['bear_room', 'other_room']
 	

@@ -1,4 +1,5 @@
-
+from sys import exit
+from random import randint
 
 def main():
 	print """
@@ -21,6 +22,14 @@ def main():
 	while True:
 		command = raw_input("What do you want to do? \n>")
 		do_stuff(command)
+	
+	def death():
+		quips = ["You Died. You must do well in real life.",
+				"Nice JoB! You died, Jackass.",
+				"Is that the shape of an L on your forehead?",
+				"I have a small dingo better at this game than you."]
+		print quips[randint(0, len(quips)-1)]
+		exit(1)
 
 def create_class(player_class, name):
 	if player_class == "Mage":

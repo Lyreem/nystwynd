@@ -33,7 +33,7 @@ def main():
 	
 	name = raw_input("What is your name? \n>")
 	
-	player_class = raw_input ("\nChoose a class:\nWarrior\nThief\nMage \n>")
+	player_class = raw_input ("\nChoose a class:\nReporter\nDetective\nMarine \n>")
 	player = create_class(player_class, name)
 	
 	print
@@ -59,7 +59,7 @@ def create_class(player_class, name):
 	if player_class == "Reporter":
 		return PlayerClass(
 			name = name,
-			type = "eporter",
+			type = "Reporter",
 			health = 3,
 			stre = 3,
 			mana = 15,
@@ -106,26 +106,9 @@ class PlayerClass():
 	def __str__(self):
 		return " Health: %d \n Strength: %d \n Mana: %d \n Stealth: %d" % (self.health, self.stre, self.mana, self.stealth)
 
-class World():
-	
-	rooms = {
-		'start_room': StartRoom(),
-		'second_room': SecondRoom(),
-		'other_room': OtherRoom(),
-		'first_jo_room': FirstJoRoom(),
-		'first_re_room': FirstReRoom(),
-		'first_ma_room': FirstMaRoom(),
-	}
 
-	def __init__(self, player):
-		self.player = player
-		self.current_area = self.rooms['start_room']
-	
-	def where_can_i_go(self):
-		print self.current_area.paths
 
-start = StartRoom()
-
+		
 class Area():	
 	paths = []
 
@@ -149,13 +132,13 @@ class FirstJoRoom(Area):
 	def enter(self):
 		pass
 		
-class First_Re_Room(Area):
+class FirstReRoom(Area):
 	paths = ['second_re_room']
 	
 	def enter(self):
 		pass
 
-class First_Ma_Room(Area):
+class FirstMaRoom(Area):
 	paths = ['second_ma_room']
 	
 	def enter(self):
@@ -167,6 +150,23 @@ class OtherRoom(Area):
 	def enter(self):
 		pass
 		
+class World():
+	
+	rooms = {
+		'start_room': StartRoom(),
+		'second_room': SecondRoom(),
+		'other_room': OtherRoom(),
+		'first_jo_room': FirstJoRoom(),
+		'first_re_room': FirstReRoom(),
+		'first_ma_room': FirstMaRoom(),
+	}
+
+	def __init__(self, player):
+		self.player = player
+		self.current_area = self.rooms['start_room']
+	
+	def where_can_i_go(self):
+		print self.current_area.paths		
 		
 class Item():
 

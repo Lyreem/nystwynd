@@ -101,9 +101,6 @@ class Game(object):
 				print 'You are Blind'
 		else:
 			return 'death'
-	
-	#def move_to_room(self, room):
-		#self.world.current_area = self.world.rooms[room]
 
 def create_class(player_class, name):
 	if player_class == "Reporter":
@@ -156,81 +153,7 @@ class PlayerClass():
 	def __str__(self):
 		return " Health: %d \n Strength: %d \n Mana: %d \n Stealth: %d" % (self.health, self.stre, self.mana, self.stealth)
 
-#class Commands(command):
-	#commands = {
-		#'me': PlayerClass(name),
-		#'stats': blahbalh(),
-	
-	
-		#}
-		
-class Area():	
-	paths = []
 
-		
-class StartRoom(Area):
-	paths = ['second_room']
-	
-	def enter(self):
-		print "You awaken in a room"
-		print "There is an exit to the North here"
-
-
-class SecondRoom(Area):
-	paths = ['start_room', 'first_jo_room', 'first_re_room', 'first_ma_room']
-	
-	def enter(self):
-		pass
-
-class FirstJoRoom(Area):
-	paths = ['second_jo_room']
-	
-	def enter(self):
-		pass
-		
-class FirstReRoom(Area):
-	paths = ['second_re_room']
-	
-	def enter(self):
-		pass
-
-class FirstMaRoom(Area):
-	paths = ['second_ma_room']
-	
-	def enter(self):
-		pass
-
-class OtherRoom(Area):
-	paths = ['start_room']
-	
-	def enter(self):
-		pass
-		
-	
-class World():
-	
-	rooms = {
-		'start_room': StartRoom(),
-		'second_room': SecondRoom(),
-		'other_room': OtherRoom(),
-		'first_jo_room': FirstJoRoom(),
-		'first_re_room': FirstReRoom(),
-		'first_ma_room': FirstMaRoom(),
-	}
-
-	def __init__(self, player):
-		self.player = player
-		self.current_area = self.rooms['start_room']
-	
-	def where_can_i_go(self):
-		print self.current_area.paths		
-		
-class Item():
-
-	def __init__(self, name):
-		self.name = name
-
-	
 if __name__ == '__main__':
 	a_game = Game("main")
 	a_game.play()	

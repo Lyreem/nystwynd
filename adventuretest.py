@@ -25,7 +25,7 @@ def main():
 :!:  :!:  :!:    :!:    :!:  !:!  :!:  !:!  
  :::: :: :::      ::     ::   ::   :::: ::  
   :: :  : :       :     ::    :   :: :  :   \n\n"""
-                                           
+
 	print """
 	Welcome to AdventureTest! 
 	To start off we'll ask a few questions and then recap. 
@@ -85,7 +85,26 @@ def create_class(player_class, name):
 		)
 	else:
 		return False
+		
+class PlayerClass():
 
+	def __init__(self, name, type, health=3, stre=1, mana=15, stealth=5):
+		self.name = name
+		self.type = type	
+		self.health = health
+		self.stre = stre
+		self.mana = mana
+		self.stealth = stealth
+		self.dead = False
+	
+	def take_hit(self, damage):
+		self.health = self.health - damage
+		
+		if self.health <= 0:
+			self.dead = True
+	
+	def __str__(self):
+		return " Health: %d \n Strength: %d \n Mana: %d \n Stealth: %d" % (self.health, self.stre, self.mana, self.stealth)
 
 class World():
 	
@@ -105,12 +124,12 @@ class World():
 	def where_can_i_go(self):
 		print self.current_area.paths
 
-#start = StartRoom()
+start = StartRoom()
 
 class Area():	
 	paths = []
 
-	
+		
 class StartRoom(Area):
 	paths = ['second_room']
 	
@@ -123,7 +142,6 @@ class SecondRoom(Area):
 	
 	def enter(self):
 		pass
-
 
 class FirstJoRoom(Area):
 	paths = ['second_jo_room']
@@ -154,28 +172,6 @@ class Item():
 
 	def __init__(self, name):
 		self.name = name
-
-		
-class PlayerClass():
-
-	def __init__(self, name, type, health=3, stre=1, mana=15, stealth=5):
-		self.name = name
-		self.type = type	
-		self.health = health
-		self.stre = stre
-		self.mana = mana
-		self.stealth = stealth
-		self.dead = False
-	
-	def take_hit(self, damage):
-		self.health = self.health - damage
-		
-		if self.health <= 0:
-			self.dead = True
-	
-	def __str__(self):
-		return " Health: %d \n Strength: %d \n Mana: %d \n Stealth: %d" % (self.health, self.stre, self.mana, self.stealth)
-		
 
 if __name__ == '__main__':
 	main()

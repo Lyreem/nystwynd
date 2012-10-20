@@ -56,28 +56,28 @@ def main():
 		exit(1)
 
 def create_class(player_class, name):
-	if player_class == "Mage":
+	if player_class == "Reporter":
 		return PlayerClass(
 			name = name,
-			type = "Mage",
+			type = "eporter",
 			health = 3,
 			stre = 3,
 			mana = 15,
 			stealth = 5,
 		)
-	elif player_class == "Thief":
+	elif player_class == "Detective":
 		return PlayerClass(
 			name = name,
-			type = "Thief",
+			type = "Detective",
 			health = 5,
 			stre = 2,
 			mana = 5,
 			stealth = 15,
 		)
-	elif player_class == "Warrior":
+	elif player_class == "Marine":
 		return PlayerClass(
 			name = name,
-			type = "Warrior",
+			type = "Marine",
 			health = 5,
 			stre = 15,
 			mana = 1,
